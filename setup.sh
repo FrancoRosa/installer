@@ -41,10 +41,9 @@ install_dependency () {
 install_dependency "curl" "sudo apt-get install -y curl "
 install_dependency "git" "sudo apt-get install  -y git"
 install_dependency "node" "sudo apt install nodejs -y" "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - "
-install_dependency "pm2" "sudo npm i -g pm2"
+install_dependency "pm2" "sudo npm i -g pm2 serialport"
 sudo apt-get install -y openssh-server
 sudo systemctl enable ssh --now
-sudo npm install -g serialport
 sudo pm2 startup
 wget -O ~/api.js https://raw.githubusercontent.com/francorosa/installer/master/api.js
 wget -O ~/settings.json https://raw.githubusercontent.com/francorosa/installer/master/settings.json
