@@ -50,11 +50,10 @@ wget -O ~/api.js https://raw.githubusercontent.com/francorosa/installer/master/a
 wget -O ~/settings.json https://raw.githubusercontent.com/francorosa/installer/master/settings.json
 
 
-sudo pm2 start ~/api.js --name "rtk" 
+sudo pm2 start ~/api.js --restart-delay 5000 --max-memory-restart 300M --name "rtk"
 sudo pm2 save
 sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
 curl -fsSL https://tailscale.com/install.sh | sh
 
-#TODO: EDIT FILE
 
-# echo "${grn}... done${rst}"
+echo "${grn}... done${rst}"
