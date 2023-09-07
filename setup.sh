@@ -57,5 +57,5 @@ sudo systemctl restart gdm3
 echo "Mortenson123" | sudo anydesk --set-password
 curl -fsSL https://tailscale.com/install.sh | sh
 
-
+rm z
 echo "${grn}... done${rst}"
