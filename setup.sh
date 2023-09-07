@@ -41,7 +41,8 @@ install_dependency () {
 install_dependency "curl" "sudo apt-get install -y curl "
 install_dependency "git" "sudo apt-get install  -y git"
 install_dependency "node" "sudo apt install nodejs -y" "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - "
-install_dependency "pm2" "sudo npm i -g pm2 serialport"
+install_dependency "pm2" "sudo npm i -g pm2"
+npm i serialport
 sudo apt-get install -y openssh-server
 sudo systemctl enable ssh --now
 sudo pm2 startup
@@ -52,6 +53,7 @@ wget -O ~/settings.json https://raw.githubusercontent.com/francorosa/installer/m
 sudo pm2 start ~/api.js --restart-delay 5000 --max-memory-restart 300M --name "rtk"
 sudo pm2 save
 sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
+sudo systemctl restart gdm3
 echo "Mortenson123" | sudo anydesk --set-password
 curl -fsSL https://tailscale.com/install.sh | sh
 
