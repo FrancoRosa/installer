@@ -54,8 +54,8 @@ sudo pm2 start ~/api.js --restart-delay 5000 --max-memory-restart 300M --name "r
 sudo pm2 save
 curl -fsSL https://tailscale.com/install.sh | sh
 
-sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
-sudo systemctl restart gdm3
-echo "Mortenson123" | sudo anydesk --set-password
+# sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
+# sudo systemctl restart gdm3
+# echo "Mortenson123" | sudo anydesk --set-password
 rm z
 echo "${grn}... done${rst}"
