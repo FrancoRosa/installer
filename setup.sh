@@ -47,6 +47,7 @@ sudo apt-get install -y openssh-server
 sudo systemctl enable ssh --now
 sudo pm2 startup
 wget -O ~/api.js https://raw.githubusercontent.com/francorosa/installer/master/api.js
+wget -O ~/mosaic.js https://raw.githubusercontent.com/francorosa/installer/master/mosaic.js
 wget -O ~/settings.json https://raw.githubusercontent.com/francorosa/installer/master/settings.json
 
 
