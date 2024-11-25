@@ -51,6 +51,8 @@ wget -O ~/settings.json https://raw.githubusercontent.com/francorosa/installer/m
 
 
 sudo pm2 start ~/api.js --restart-delay 5000 --max-memory-restart 300M --name "rtk"
+sudo pm2 start ~/mosaic.js --restart-delay 5000 --max-memory-restart 300M --name "mosaic"
+sudo pm2 stop rtk
 sudo pm2 save
 curl -fsSL https://tailscale.com/install.sh | sh
 
