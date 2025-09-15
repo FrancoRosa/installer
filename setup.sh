@@ -66,12 +66,7 @@ sudo pm2 start ~/mosaic.js --restart-delay 5000 --max-memory-restart 300M --name
 sudo pm2 stop rtk
 sudo pm2 save
 
-# set unattended password
-echo -n "Mortenson123" | sudo anydesk --set-password
 
-# disable wayland on ubuntu for anydesk
-sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
-sudo systemctl restart gdm3
 
 # gnome settings
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'anydesk.desktop', 'brave-browser.desktop']"
@@ -86,6 +81,13 @@ jq '.homepage = "https://tt--pile-placer.netlify.app"
 ~/.config/BraveSoftware/Brave-Browser/Default/Preferences \
 > /tmp/prefs && mv /tmp/prefs ~/.config/BraveSoftware/Brave-Browser/Default/Preferences
 
+
+# set unattended password
+echo -n "Mortenson123" | sudo anydesk --set-password
+
+# disable wayland on ubuntu for anydesk
+sudo sed -i '/.*WaylandEnable=.*/ s/.*/WaylandEnable=false/' "/etc/gdm3/custom.conf"
+sudo systemctl restart gdm3
 
 rm z
 echo "${grn}... done${rst}"
