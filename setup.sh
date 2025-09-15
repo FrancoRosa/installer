@@ -47,14 +47,10 @@ install_dependency "brave-browser" "curl -fsS https://dl.brave.com/install.sh | 
 install_dependency "anydesk" "sudo apt install ca-certificates curl apt-transport-https \
 sudo install -m 0755 -d /etc/apt/keyrings \
 sudo curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY -o /etc/apt/keyrings/keys.anydesk.com.asc \
-sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc"
-
-# Add the AnyDesk apt repository
-echo "deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null
-
-# Update apt caches and install the AnyDesk client
-sudo apt update
-sudo apt install anydesk"
+sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc \
+echo 'deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main' | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null \
+sudo apt update \
+sudo apt install anydesk" 
 
 npm i serialport
 sudo apt-get install -y openssh-server
