@@ -53468,23 +53468,13 @@ var require_cjs5 = __commonJS({
   }
 });
 
-// settings.json
-var require_settings = __commonJS({
-  "settings.json"(exports2, module2) {
-    module2.exports = {
-      ntrip: "ws://rtkflow.xyz:5900",
-      mosaic: "192.168.5.1:8181"
-    };
-  }
-});
-
 // js/mosaic.js
 var require_mosaic = __commonJS({
   "js/mosaic.js"(exports2) {
     var { SerialPort } = require("serialport");
     var { decode } = require_mosaic_decoder();
     var { io: io2 } = require_cjs5();
-    var settings = require_settings();
+    var settings = require("./settings.json");
     var socket = io2(settings.ntrip);
     var baudRate = 115200;
     var paths = [];
