@@ -73,5 +73,5 @@ sudo pm2 save
 rm z
 echo "${grn}... installation complete!${rst}"
 
-echo "${grn}... don't forget to edit ${red}dips/settings.json ${rst}"
-echo "${grn}... after any settings change run ${red}sudo pm2 restart dips${rst}"
+echo "${grn}... don't forget to edit ${red}pplacer/settings.json ${rst}"
+echo "${grn}... after any settings change run ${red}sudo pm2 restart mosaic${rst}"
