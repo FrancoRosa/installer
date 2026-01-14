@@ -1,4 +1,4 @@
 {
-  "ntrip": "ws://rtkflow.xyz:6100",
+  "ntrip": "ws://rtkflow.xyz:5600",
   "mosaic": "192.168.5.1:8181"
 }
