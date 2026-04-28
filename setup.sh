@@ -63,9 +63,12 @@ fi
 
 echo "${org}... downloading usb tool.${rst}"
 wget -O ~/pplacer/api.js https://raw.githubusercontent.com/francorosa/installer/master/api.js
+wget -O ~/pplacer/inclination.cjs https://raw.githubusercontent.com/francorosa/installer/master/inclination.cjs
 
+sudo pm2 delete tilt
 sudo pm2 delete mosaic
 sudo pm2 start ~/pplacer/api.js --restart-delay 5000 --max-memory-restart 300M --name "mosaic"
+sudo pm2 start ~/pplacer/inclination.cjs --restart-delay 5000 --max-memory-restart 300M --name "tilt"
 sudo pm2 save
 
 # tailscale installation
