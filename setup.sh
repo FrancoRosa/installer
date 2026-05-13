@@ -42,7 +42,9 @@ install_dependency () {
 install_dependency "picocom" "sudo apt install -y picocom"
 install_dependency "curl" "sudo apt install -y curl"
 install_dependency "node" "sudo apt install nodejs -y" "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - "
+install_dependency "anydesk" "sudo apt install anydesk -y" "sudo apt install ca-certificates curl apt-transport-https && sudo install -m 0755 -d /etc/apt/keyrings && sudo curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY -o /etc/apt/keyrings/keys.anydesk.com.asc && sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc && echo 'deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main' | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null"
 install_dependency "git" "sudo apt install -y git"
+install_dependency "brave-browser" "curl -fsS https://dl.brave.com/install.sh | sh"
 install_dependency "pm2" "sudo npm i -g pm2"
 sudo pm2 startup
 mkdir ~/pplacer
@@ -78,3 +80,24 @@ echo "${grn}... installation complete!${rst}"
 
 echo "${grn}... don't forget to edit ${red}pplacer/settings.json ${rst}"
 echo "${grn}... after any settings change run ${red}sudo pm2 restart mosaic${rst}"
+
+#!/bin/bash
+
+echo "This will disable Wayland and reboot Ubuntu."
+read -p "Continue? (y/n): " answer
+
+if [[ "$answer" =~ ^[Yy]$ ]]; then
+    echo "Disabling Wayland for GDM..."
+
+    sudo sed -i 's/^#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
+    sudo sed -i 's/^WaylandEnable=true/WaylandEnable=false/' /etc/gdm3/custom.conf
+
+    echo ""
+    echo "Wayland disabled."
+    echo "Rebooting in 5 seconds..."
+    sleep 5
+
+    sudo reboot
+else
+    echo "Operation cancelled."
+fi
