@@ -107,19 +107,11 @@ echo "${grn}... after any settings change run ${red}sudo pm2 restart mosaic${rst
 echo "This will disable Wayland and reboot Ubuntu."
 read -p "Continue? (y/n): " answer
 
-# ================================
-# Disable lock screen
-# ================================
 
-gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.lockdown disable-lock-screen true
 gsettings set org.gnome.desktop.interface enable-animations false
-xdg-settings set default-web-browser brave-browser.desktop
-# ================================
-# Disable screen turn off
-# ================================
-
 gsettings set org.gnome.desktop.session idle-delay 0
+xdg-settings set default-web-browser brave-browser.desktop
 
 if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
     echo "Disabling Wayland for GDM..."
