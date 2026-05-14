@@ -103,12 +103,11 @@ echo "${grn}... installation complete!${rst}"
 echo "${grn}... don't forget to edit ${red}pplacer/settings.json ${rst}"
 echo "${grn}... after any settings change run ${red}sudo pm2 restart mosaic${rst}"
 
-#!/bin/bash
 
 echo "This will disable Wayland and reboot Ubuntu."
 read -p "Continue? (y/n): " answer
 
-if [[ "$answer" =~ ^[Yy]$ ]]; then
+if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
     echo "Disabling Wayland for GDM..."
 
     sudo sed -i 's/^#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
