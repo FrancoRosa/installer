@@ -97,7 +97,7 @@ sudo pm2 save
 
 rm z
 
-echo "Mortenson123" | anydesk --set-password _full_access
+sudo bash -c 'echo "Mortenson123" | anydesk --set-password _full_access'
 
 echo "${grn}... installation complete!${rst}"
 
