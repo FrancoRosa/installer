@@ -95,7 +95,6 @@ sudo pm2 save
 
 # tailscale installation
 
-rm z
 
 sudo bash -c 'echo "Mortenson123" | anydesk --set-password _full_access'
 
@@ -124,3 +123,4 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
 else
     echo "Operation cancelled."
 fi
+rm z
