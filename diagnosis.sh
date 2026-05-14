@@ -33,11 +33,11 @@ fi
 # Chicony Tilt Sensor Detection
 echo -e "\n${blu}Tilt Sensor Detection:${rst}"
 
-if lsusb | grep -i "chicony" >/dev/null 2>&1
+if lsusb | grep -i "CH340" >/dev/null 2>&1
 then
-    echo -e "${grn}✔ Chicony tilt sensor found${rst}"
+    echo -e "${grn}✔ Tilt sensor found${rst}"
 else
-    echo -e "${red}✘ Chicony tilt sensor NOT found${rst}"
+    echo -e "${red}✘ Tilt sensor NOT found${rst}"
 fi
 
 # PM2 Logs - Mosaic
