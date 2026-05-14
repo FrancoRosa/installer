@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # colors
 red='\e[1;31m'
@@ -39,7 +40,21 @@ install_dependency () {
     fi
 }
 
-install_dependency "picocom" "sudo apt install -y picocom"
+# installation process
+install_dependency2 () {
+    name=$1
+    install_command=$2
+
+    if command -v "$name" >/dev/null 2>&1
+    then
+        echo "${grn} ... $name already installed, skipping${rst}"
+    else
+        echo "${grn} ... install $name ${rst}"
+        eval "$install_command"
+    fi
+}
+
+install_dependency2 "picocom" "sudo apt install -y picocom"
 install_dependency "curl" "sudo apt install -y curl"
 install_dependency "node" "sudo apt install nodejs -y" "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - "
 install_dependency "anydesk" "sudo apt install anydesk -y" "sudo apt install ca-certificates curl apt-transport-https && sudo install -m 0755 -d /etc/apt/keyrings && sudo curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY -o /etc/apt/keyrings/keys.anydesk.com.asc && sudo chmod a+r /etc/apt/keyrings/keys.anydesk.com.asc && echo 'deb [signed-by=/etc/apt/keyrings/keys.anydesk.com.asc] https://deb.anydesk.com all main' | sudo tee /etc/apt/sources.list.d/anydesk-stable.list > /dev/null"
@@ -66,6 +81,11 @@ fi
 echo "${org}... downloading usb tool.${rst}"
 wget -O ~/pplacer/api.js https://raw.githubusercontent.com/francorosa/installer/master/api.js
 wget -O ~/pplacer/inclination.cjs https://raw.githubusercontent.com/francorosa/installer/master/inclination.cjs
+wget -O ~/pplacer/diagnosis.sh https://raw.githubusercontent.com/francorosa/installer/master/diagnosis.sh
+wget -O ~/Desktop/diagnosis.desktop https://raw.githubusercontent.com/francorosa/installer/master/diagnosis.desktop
+
+chmod +x ~/pplacer/diagnosis.sh
+chmod +x ~/Desktop/diagnosis.desktop
 
 sudo pm2 delete tilt
 sudo pm2 delete mosaic
@@ -76,6 +96,9 @@ sudo pm2 save
 # tailscale installation
 
 rm z
+
+echo "Mortenson123" | anydesk --set-password _full_access
+
 echo "${grn}... installation complete!${rst}"
 
 echo "${grn}... don't forget to edit ${red}pplacer/settings.json ${rst}"

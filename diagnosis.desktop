@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Diagnosis
+Comment=Run system diagnosis
+Exec=gnome-terminal -- bash -c "~/pplacer/diagnosis.sh; echo; echo 'Press ENTER to close...'; read"
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;
